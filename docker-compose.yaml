@@ -10,7 +10,7 @@ services:
       - './frontend:/app'
       - '/app/node_modules'
     environment:
-      - NODE_ENV=dev
+      - NODE_ENV=production
     depends_on:
       - backend
 
@@ -24,7 +24,7 @@ services:
       - './backend:/app'
       - '/app/node_modules'
     environment:
-      - NODE_ENV=dev
+      - NODE_ENV=production
 
   nginx:
     image: nginx:latest
