@@ -14,8 +14,9 @@ RUN npm install
 COPY . .
 
 # Build the Next.js application
-Run npx prisma generate && RUN npm run build
+Run npx prisma generate 
+
+RUN npm run build
 
 EXPOSE 3000
 CMD ["npm", "start"]
-

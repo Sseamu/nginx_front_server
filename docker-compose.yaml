@@ -1,16 +1,37 @@
 version: '3.9'
 services:
-  next-app:
+  frontend:
     build:
-      context: .
-      dockerfile: Dockerfile.next 
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - '3000:3000'
+    volumes:
+      - './frontend:/app'
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=dev
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '8000:8000'
+    volumes:
+      - './backend:/app'
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=dev
 
   nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx 
+    image: nginx:latest
     ports:
-      - "80:80"
+      - '80:80'
+    volumes:
+      - './nginx/nginx.conf:/etc/nginx/nginx.conf'
+    depends_on:
+      - frontend
 
