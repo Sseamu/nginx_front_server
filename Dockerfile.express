@@ -16,6 +16,9 @@ COPY . .
 # Set the port
 EXPOSE 8000
 
+# Npm run build 
+Run npm run build
+
 # Start the app
 CMD ["npm", "start"]
 
