@@ -17,6 +17,8 @@ COPY . .
 EXPOSE 8000
 
 # Npm run build 
+RUN npx prisma generate
+
 Run npm run build
 
 # Start the app
